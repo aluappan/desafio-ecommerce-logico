@@ -88,8 +88,8 @@ create table productOrder (
 );
  
 create table storageLocation (
-    idLproduct INT,
-    idLstorage INT,
+    idLproduct int,
+    idLstorage int,
     location varchar(255) not null,
     primary key (idLproduct , idLstorage),
     constraint fk_product_seller foreign key (idLproduct)
