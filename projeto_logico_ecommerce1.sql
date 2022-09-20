@@ -21,7 +21,7 @@ create table product(
     constraint unique_cpf_client unique (CPF)
     );
   
-CREATE TABLE payments (
+create table payments (
     idclient INT,
     idPayment INT,
     typePayment ENUM('Cartão', 'Boleto', 'Pix'),
@@ -65,35 +65,35 @@ create table seller(
 	constraint unique_cpf_seller unique (CPF)
     );
    
-CREATE TABLE productSeller (
-    idPseller INT,
-    idProduct INT,
-    prodQuantity INT NOT NULL DEFAULT 1,
-    PRIMARY KEY (idPseller , idProduct),
-    CONSTRAINT fk_product_seller FOREIGN KEY (idPseller)
-        REFERENCES seller (idSeller),
-    CONSTRAINT fk_product_product FOREIGN KEY (idProduct)
-        REFERENCES product (idProduct)
+create table productSeller (
+    idPseller int,
+    idProduct int,
+    prodQuantity int not null default 1,
+    primary key (idPseller , idProduct),
+    constraint fk_product_seller foreign key (idPseller)
+        references seller (idSeller),
+    constraint fk_product_product foreign key (idProduct)
+        references product (idProduct)
 );
  
-CREATE TABLE productOrder (
-    idPOproduct INT,
-    idOrder INT,
-    prodQuantity INT DEFAULT 1,
-    PRIMARY KEY (idPOproduct , idPOrder),
-    CONSTRAINT fk_product_seller FOREIGN KEY (idPOproduct)
-        REFERENCES seller (idProduct),
-    CONSTRAINT fk_product_product FOREIGN KEY (idPOorder)
-        REFERENCES product (idOrder)
+create table productOrder (
+    idPOproduct int,
+    idOrder int,
+    prodQuantity int default 1,
+    primary key (idPOproduct , idPOrder),
+    constraint fk_product_seller FOREIGN KEY (idPOproduct)
+        references seller (idProduct),
+    constraint fk_product_product foreign key (idPOorder)
+        references product (idOrder)
 );
  
-CREATE TABLE storageLocation (
+create table storageLocation (
     idLproduct INT,
     idLstorage INT,
-    location VARCHAR(255) NOT NULL,
-    PRIMARY KEY (idLproduct , idLstorage),
-    CONSTRAINT fk_product_seller FOREIGN KEY (idLproduct)
-        REFERENCES product (idProduct),
-    CONSTRAINT fk_product_product FOREIGN KEY (idLstorage)
-        REFERENCES orders (productSeller)
+    location varchar(255) not null,
+    primary key (idLproduct , idLstorage),
+    constraint fk_product_seller foreign key (idLproduct)
+        references product (idProduct),
+    constraint fk_product_product foreign key (idLstorage)
+        references orders (productSeller)
 )
