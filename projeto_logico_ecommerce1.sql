@@ -22,11 +22,11 @@ create table product(
     );
   
 create table payments (
-    idclient INT,
-    idPayment INT,
-    typePayment ENUM('Cartão', 'Boleto', 'Pix'),
-    limitAvailable FLOAT,
-    PRIMARY KEY (idClient , idPayment)
+    idclient int,
+    idPayment int,
+    typePayment enum('Cartão', 'Boleto', 'Pix'),
+    limitAvailable float,
+    primary key (idClient , idPayment)
 );
 
 create table orders(
@@ -81,7 +81,7 @@ create table productOrder (
     idOrder int,
     prodQuantity int default 1,
     primary key (idPOproduct , idPOrder),
-    constraint fk_product_seller FOREIGN KEY (idPOproduct)
+    constraint fk_product_seller foreign key (idPOproduct)
         references seller (idProduct),
     constraint fk_product_product foreign key (idPOorder)
         references product (idOrder)
