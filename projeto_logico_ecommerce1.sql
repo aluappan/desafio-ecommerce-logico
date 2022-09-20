@@ -96,4 +96,4 @@ create table storageLocation (
         references product (idProduct),
     constraint fk_product_product foreign key (idLstorage)
         references orders (productSeller)
-)
+);
